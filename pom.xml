@@ -32,30 +32,31 @@
             <artifactId>logback-classic</artifactId>
             <version>1.1.1</version>
         </dependency>
-<!--数据库相关依赖-->
+        <!--数据库相关依赖-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.35</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
         </dependency>
-<!--DAO框架：MyBatis依赖-->
+        <!--DAO框架：MyBatis依赖-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.3.0</version>
         </dependency>
-<!--MyBatis自身实现spring整合依赖-->
+        <!--MyBatis自身实现spring整合依赖-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>1.2.3</version>
         </dependency>
-<!--Servlet web相关依赖-->
+        <!--Servlet web相关依赖-->
         <dependency>
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard</artifactId>
@@ -76,14 +77,13 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
-<!--spring依赖-->
+        <!--spring依赖-->
         <!--spring核心依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>4.1.3.RELEASE</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
@@ -94,7 +94,7 @@
             <artifactId>spring-context</artifactId>
             <version>4.1.3.RELEASE</version>
         </dependency>
-<!--spring dao层依赖-->
+        <!--spring dao层依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -106,7 +106,7 @@
             <version>4.1.3.RELEASE</version>
         </dependency>
 
-<!--spring web相关依赖-->
+        <!--spring web相关依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
