@@ -125,6 +125,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>Hangzhou</finalName>
+        <finalName>seckill</finalName>
     </build>
 </project>
