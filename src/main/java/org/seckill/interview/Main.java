@@ -1,50 +1,25 @@
 package org.seckill.interview;
 
-/**
- * Created by liukang on 2017/7/15.
- */
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
 public class Main {
-
-    public static int singleSort(int[] a,int start ,int end){
-        int temp = a[start];
-        while(start <end){
-            while(start<end&&a[end]>=temp) end--;
-            a[start] = a[end];
-            while(start<end&&a[start]<=temp) start++;
-            a[end] = a[start];
+    public static void main(String[] args) {
+        int[] a = new int[]{1, 2, 3, 4, 5};
+        String[] b = new String[]{"1223", "21313", "32423"};
+        List list = new ArrayList();
+        list.add("hah");
+        list.add("haah");
+        list.add("haaah");
+        Iterator iterator = list.iterator();
+        while(iterator.hasNext()){
+            String s = (String) iterator.next();
+            System.out.println(s);
         }
-        a[start] = temp;
-        return start;
-
-
-    }
-
-    public static void qSort(int[] a ,int start ,int end){
-        int temp = singleSort(a,start,end);
-        if(start<temp) {
-            qSort(a, start, temp - 1);
-        }
-        if(temp<end) {
-            qSort(a, temp + 1, end);
-        }
-
-
     }
 
 
-    public static void main(String[] args){
-
-        int[] a = {5,4,3,2,1};
-        for(int i:a){
-            System.out.print(i);
-        }
-        System.out.println();
-        qSort(a,0,a.length-1);
-
-        for(int i:a){
-            System.out.print(i);
-        }
-
-
-    }
 }
