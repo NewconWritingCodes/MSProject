@@ -6,12 +6,16 @@ import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
 import org.seckill.entity.SuccessKilled;
+import org.seckill.enums.SeckillStatEnum;
 import org.seckill.exception.RepeatKillException;
 import org.seckill.exception.SeckillCloseException;
 import org.seckill.exception.SeckillException;
 import org.seckill.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
@@ -20,9 +24,15 @@ import java.util.List;
 /**
  * Created by liukang on 2017/7/17.
  */
+//@Component @Service @Dao @Controller
+@Service
 public class SeckillServiceImpl implements SeckillService{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+//    注入Service依赖
+    @Autowired
     private SeckillDao seckillDao;
+
+    @Autowired
     private SuccessKilledDao successKilledDao;
     //md5盐值，用于混淆
     private final String slat = "sdrqw4523qfdatfg3qw454tdsafa";
@@ -53,9 +63,10 @@ public class SeckillServiceImpl implements SeckillService{
         return new Exposer(true,md5,seckillId);
     }
 
+    @Transactional
     public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillException, SeckillCloseException, RepeatKillException {
-        if(md5 == null ||md5.equals(getMD5(seckillId))){
+        if(md5 == null ||!md5.equals(getMD5(seckillId))){
             throw new SeckillException("seckill data rewrite");
         }
         Date nowTime = new Date();
@@ -73,7 +84,7 @@ public class SeckillServiceImpl implements SeckillService{
                 }else{
                     //success
                     SuccessKilled successKilled = successKilledDao.queryByIdWithSeckill(seckillId,userPhone);
-                    return new SeckillExecution(seckillId,1,"秒杀成功",successKilled);
+                    return new SeckillExecution(seckillId, SeckillStatEnum.SUCCESS,successKilled);
                 }
             }
         }catch (SeckillCloseException e1){

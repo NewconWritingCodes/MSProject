@@ -7,36 +7,49 @@ package edu.zju;
 import static edu.zju.Spiciness.*;
 import static edu.zju.OzWitch.*;
 
+import static edu.zju.Main.*;
+
+enum MyColor{
+    RED,GREEN,BLUE;
+
+    @Override
+    public String toString() {
+        String id = name();
+        return "Color is "+id;
+    }
+}
 public class Main {
+    static MyColor myColor = MyColor.RED;
+    public static void changeColor(){
+        switch (myColor){
+            case RED:
+                System.out.println(myColor);
+                myColor = MyColor.BLUE;
+                break;
+            case BLUE:
+                System.out.println(myColor);
+                myColor = MyColor.GREEN;
+                break;
+            case GREEN:
+                System.out.println(myColor);
+                myColor = MyColor.RED;
+                break;
+        }
+
+
+    }
+
 
     public static void main(String[] args) {
 
-
-        Spiciness s1 =Spiciness.HOT;
-        switchEnum(s1);
-        Spiciness s2 =Spiciness.MILD;
-        switchEnum(s2);
-
-        for(Spiciness s :Spiciness.values()){
-            System.out.println(HOT);
+        for(int i=0;i<10;i++){
+            Main main = new Main();
+//            System.out.println(main);
+            main.changeColor();
         }
 
-        System.out.println();
-
-        System.out.println(WEST.getDescription());
     }
-    public static void switchEnum(Spiciness spiciness){
-        switch (spiciness){
-            case HOT:
-                System.out.println("HOT");
-                break;
-            case MILD:
-                System.out.println("MILD");
-                break;
-        }
 
-
-    }
 
 
 }
