@@ -11,6 +11,7 @@ import org.seckill.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +30,14 @@ public class SeckillController {
     @Autowired
     private SeckillService seckillService;
 
-    @RequestMapping(name = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
         //list.jsp+model =ModelAndView
         List<Seckill> list = seckillService.getSeckillList();
         model.addAttribute("list", list);
         return "list";
     }
-    @RequestMapping(name="/hello",method = RequestMethod.GET)
+    @RequestMapping(value="/hello",method = RequestMethod.GET)
     public String hello(Model model){
         return "hello";
     }
